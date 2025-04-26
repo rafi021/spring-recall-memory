@@ -1,5 +1,7 @@
 package com.ibrahim.store;
 
+import org.springframework.stereotype.Service;
+
 public class StripePaymentService implements PaymentService {
 
     @Override
