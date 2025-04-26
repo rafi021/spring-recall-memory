@@ -1,5 +1,5 @@
 package com.ibrahim.store;
 
 public interface NotificationService {
-    public  void send(String message);
+    void send(String message, String email);
 }
