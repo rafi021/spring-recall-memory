@@ -1,5 +1,7 @@
 package com.ibrahim.store;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,16 @@ public class OrderService {
 //    @Autowired
     public OrderService(PaymentService paymentService){
         this.paymentService = paymentService;
+    }
+
+    @PostConstruct
+    public void init(){
+        System.out.println("OrderService post construct");
+    }
+
+    @PreDestroy
+    public void cleanup(){
+        System.out.println("OrderService predestroy");
     }
 
     public void placeOrder(){
