@@ -15,6 +15,8 @@ public class StoreApplication {
 
 		var notificationManager = context.getBean(NotificationManager.class);
 		notificationManager.sendNotification("Hello Ibrahim");
+
+		var heavyResource = context.getBean(HeavyResource.class);
 	}
 
 }
