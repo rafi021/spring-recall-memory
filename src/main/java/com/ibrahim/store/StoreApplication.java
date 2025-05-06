@@ -1,5 +1,7 @@
 package com.ibrahim.store;
 
+import com.ibrahim.store.entities.Address;
+import com.ibrahim.store.entities.Tag;
 import com.ibrahim.store.entities.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +19,7 @@ public class StoreApplication {
 				.password("1234")
 				.build();
 
-
+		user.addTag("tag1");
 		System.out.println(user);
 	}
 
