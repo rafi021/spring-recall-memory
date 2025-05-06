@@ -1,6 +1,7 @@
 package com.ibrahim.store;
 
 import com.ibrahim.store.entities.Address;
+import com.ibrahim.store.entities.Profile;
 import com.ibrahim.store.entities.Tag;
 import com.ibrahim.store.entities.User;
 import org.springframework.boot.SpringApplication;
@@ -18,8 +19,8 @@ public class StoreApplication {
 				.email("ibrahim@gmail.com")
 				.password("1234")
 				.build();
-
-		user.addTag("tag1");
+		var profile = Profile.builder().bio("bio").dateOfBirth("2025-05-06").loyaltyPoints(1).phoneNumber("01675306077").build();
+		user.addProfile(profile);
 		System.out.println(user);
 	}
 
