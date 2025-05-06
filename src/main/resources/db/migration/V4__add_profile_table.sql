@@ -1,10 +1,10 @@
 create table profiles
 (
     id             bigint auto_increment,
-    bio            varchar(255)  not null,
+    bio            text,
     phone_number   varchar(15)   not null,
     date_of_birth  date          null,
-    loyalty_points int default 0 null,
+    loyalty_points int unsigned default 0 null,
     user_id        bigint        not null,
     constraint profiles_pk
         primary key (id),
