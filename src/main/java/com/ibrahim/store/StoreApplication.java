@@ -16,6 +16,9 @@ public class StoreApplication {
 				.email("ibrahim@gmail.com")
 				.password("1234")
 				.build();
+
+
+		System.out.println(user);
 	}
 
 }
