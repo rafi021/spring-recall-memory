@@ -1,14 +1,14 @@
 package com.ibrahim.store.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
+
+import java.math.BigDecimal;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
-@Builder
 @Entity
 @Table(name = "products")
 public class Product {
@@ -20,12 +20,15 @@ public class Product {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "price")
-    private Double price;
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
 
+    @ColumnDefault("0.00")
+    @Column(name = "price", precision = 10, scale = 2)
+    private BigDecimal price;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id")
-    @ToString.Exclude
     private Category category;
+
 }
