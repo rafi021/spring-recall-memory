@@ -13,14 +13,7 @@ public class StoreApplication {
 		ApplicationContext context = SpringApplication.run(StoreApplication.class, args);
 
 		var service = context.getBean(UserService.class);
-//		var user = User.builder().name("Ibrahim").email("ibrahim@gmail.com").password("12345").build();
-//		repository.save(user);
-
-//		var user = repository.findById(1L).orElseThrow();
-//		System.out.println(user.getEmail());
-
-//		repository.findAll().forEach(u-> System.out.println(u.getEmail()));
-		service.persistRelated();
+		service.manageProducts();
 	}
 
 }

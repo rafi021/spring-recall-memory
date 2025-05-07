@@ -1,14 +1,19 @@
 package com.ibrahim.store;
 
 import com.ibrahim.store.entities.Address;
+import com.ibrahim.store.entities.Category;
+import com.ibrahim.store.entities.Product;
 import com.ibrahim.store.entities.User;
 import com.ibrahim.store.repositories.AddressRepository;
+import com.ibrahim.store.repositories.ProductRepository;
 import com.ibrahim.store.repositories.ProfileRepository;
 import com.ibrahim.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 @AllArgsConstructor
 @Service
@@ -17,6 +22,8 @@ public class UserService {
     private final ProfileRepository profileRepository;
     private  final EntityManager entityManager;
     private final AddressRepository addressRepository;
+    private final ProductRepository productRepository;
+    private final CategoryRepository categoryRepository;
 
     @Transactional
     public void showEntityStates(){
@@ -62,6 +69,22 @@ public class UserService {
         var address = user.getAddresses().getFirst();
         user.removeAddrees(address);
         userRepository.save(user);
+    }
+
+    @Transactional
+    public void manageProducts(){
+//        var category = new Category("fashion");
+        var category = categoryRepository.findById((byte)1).orElseThrow();
+        var product = Product.builder()
+                .name("product 2")
+                .price(BigDecimal.valueOf(10.99))
+                .description("product description")
+                .category(category)
+                .build();
+
+        productRepository.save(product);
+
+
     }
 
 }
