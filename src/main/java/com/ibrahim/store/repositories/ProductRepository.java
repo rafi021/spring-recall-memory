@@ -1,7 +1,7 @@
 package com.ibrahim.store.repositories;
 
+import com.ibrahim.store.dtos.ProductSummary;
 import com.ibrahim.store.dtos.ProductSummaryDTO;
-import com.ibrahim.store.dtos.ProductSummery;
 import com.ibrahim.store.entities.Category;
 import com.ibrahim.store.entities.Product;
 import org.springframework.data.jpa.repository.Modifying;
@@ -56,8 +56,11 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     @Query("update Product p set p.price = :newPrice where p.category.id = :categoryId")
     void updatePriceByCategory(BigDecimal newPrice, Byte categoryId);
 
+    //Interface based projection
+    @Query("select p.id, p.name from Product p where p.category = :category")
+    List<ProductSummary> findByCategory(@Param("category") Category category);
 
-
-    @Query("select new com.ibrahim.store.dtos.ProductSummaryDTO(p.id, p.name) from Product p where p.category = :category")
-    List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
+    // Class based projection
+//    @Query("select new com.ibrahim.store.dtos.ProductSummaryDTO(p.id, p.name) from Product p where p.category = :category")
+//    List<ProductSummaryDTO> findByCategory(@Param("category") Category category);
 }

@@ -1,6 +1,6 @@
 package com.ibrahim.store.dtos;
 
-public interface ProductSummery {
+public interface ProductSummary {
     Long getId();
     String getName();
 }
