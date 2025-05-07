@@ -1,7 +1,9 @@
 package com.ibrahim.store.repositories;
 
 import com.ibrahim.store.entities.Product;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -34,5 +36,6 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
     List<Product> findTop5ByNameOrderByPrice(String name);
     List<Product> findFirst5ByNameLikeOrderByPrice(String name);
 
-
+    @Query(value = "select * from products p where p.price between :min and :max order by p.name", nativeQuery = true)
+    List<Product> findByProducts(@Param("min") BigDecimal min, @Param("max") BigDecimal max);
 }
