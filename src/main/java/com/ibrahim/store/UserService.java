@@ -83,8 +83,11 @@ public class UserService {
                 .build();
 
         productRepository.save(product);
+    }
 
-
+    @Transactional
+    public void updateProductPrices(){
+        productRepository.updatePriceByCategory(BigDecimal.valueOf(10), (byte) 1);
     }
 
 }
