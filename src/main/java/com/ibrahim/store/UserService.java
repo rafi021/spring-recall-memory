@@ -1,5 +1,6 @@
 package com.ibrahim.store;
 
+import com.ibrahim.store.entities.Address;
 import com.ibrahim.store.entities.User;
 import com.ibrahim.store.repositories.AddressRepository;
 import com.ibrahim.store.repositories.ProfileRepository;
@@ -43,6 +44,14 @@ public class UserService {
 
     public void showAddress(){
         var address = addressRepository.findById(1L).orElseThrow();
+    }
+
+    public void persistRelated(){
+        var user = User.builder().name("ibrahim").email("ibrahim@gmail.com").password("123").build();
+        var address = Address.builder().state("Dhaka").street("Dhaka").city("Dhaka").zip("1209").build();
+
+        user.addAddress(address);
+        userRepository.save(user);
     }
 
 }

@@ -20,7 +20,7 @@ public class StoreApplication {
 //		System.out.println(user.getEmail());
 
 //		repository.findAll().forEach(u-> System.out.println(u.getEmail()));
-		service.showAddress();
+		service.persistRelated();
 	}
 
 }
