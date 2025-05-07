@@ -31,7 +31,7 @@ public class Address {
     @Column(nullable = false, name = "state")
     private String state;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")  // owner defination
     @ToString.Exclude
     private  User user;

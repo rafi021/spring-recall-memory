@@ -1,6 +1,8 @@
 package com.ibrahim.store;
 
 import com.ibrahim.store.entities.User;
+import com.ibrahim.store.repositories.AddressRepository;
+import com.ibrahim.store.repositories.ProfileRepository;
 import com.ibrahim.store.repositories.UserRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
@@ -11,7 +13,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
     private final UserRepository userRepository;
+    private final ProfileRepository profileRepository;
     private  final EntityManager entityManager;
+    private final AddressRepository addressRepository;
 
     @Transactional
     public void showEntityStates(){
@@ -29,6 +33,16 @@ public class UserService {
         else
             System.out.println("Transient/Detached");
 
+    }
+
+    @Transactional
+    public void showUserProfile(){
+        var profile = profileRepository.findById(1L).orElseThrow();
+        System.out.println(profile.getUser().getEmail());
+    }
+
+    public void showAddress(){
+        var address = addressRepository.findById(1L).orElseThrow();
     }
 
 }
