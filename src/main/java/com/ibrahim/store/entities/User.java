@@ -10,7 +10,6 @@ import java.util.Set;
 
 @Setter
 @Getter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -74,5 +73,13 @@ public class User {
     public void removeProfile(Profile profile){
         this.removeProfile(profile);
         profile.setUser(null);
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "email = " + email + ")";
     }
 }
