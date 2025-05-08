@@ -41,8 +41,9 @@ public class User {
     )
     @Builder.Default
     private Set<Tag> tags = new HashSet<>();
-    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Profile profile;
+
+//    @OneToOne(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private Profile profile;
 
     public void addAddress(Address address){
         addresses.add(address);
@@ -65,15 +66,15 @@ public class User {
         tag.getUsers().remove(this);
     }
 
-    public void addProfile(Profile profile){
-        this.setProfile(profile);
-        profile.setUser(this);
-    }
-
-    public void removeProfile(Profile profile){
-        this.removeProfile(profile);
-        profile.setUser(null);
-    }
+//    public void addProfile(Profile profile){
+//        this.setProfile(profile);
+//        profile.setUser(this);
+//    }
+//
+//    public void removeProfile(Profile profile){
+//        this.removeProfile(profile);
+//        profile.setUser(null);
+//    }
 
     @Override
     public String toString() {
